@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME} from '../services/auth.constant';
+
 
 @Injectable()
 export class AuthenticationService {
@@ -17,13 +18,14 @@ export class AuthenticationService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Authorization', 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD));
 
+    this.http.post('...',body)
     return this.http.post('http://localhost:8080/oauth/token', body, {headers})
-      .map(res => res.json())
-      .map((res: any) => {
+      .pipe(map(res => res.json()))
+      .pipe(map((res: any) => {
         if (res.access_token) {
           return res.access_token;
         }
         return null;
-      });
+      }));
   }
 }
