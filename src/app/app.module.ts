@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import {JwtModule } from '@auth0/angular-jwt';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Http, HttpModule} from '@angular/http';
@@ -11,6 +13,10 @@ import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { NavbarComponent } from './navbar/navbar.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +28,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    JwtModule.forRoot(
+      {
+        config:{tokenGetter:tokenGetter}
+      }
+    )
   ],
   providers: [
     UserService,

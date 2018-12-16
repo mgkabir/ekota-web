@@ -14,10 +14,8 @@ export class LoginComponent implements OnInit {
   error = '';
   redirectUrl: string;
  
-  constructor(private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private authenticationService: AuthenticationService,
-    private userService: UserService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+    private authenticationService: AuthenticationService, private userService: UserService) {
 this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
 }
 

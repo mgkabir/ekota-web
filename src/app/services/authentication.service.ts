@@ -18,7 +18,6 @@ export class AuthenticationService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Authorization', 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD));
 
-    this.http.post('...',body)
     return this.http.post('http://localhost:8080/oauth/token', body, {headers})
       .pipe(map(res => res.json()))
       .pipe(map((res: any) => {
