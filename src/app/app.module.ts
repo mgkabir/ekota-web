@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AccountComponent } from './account/account.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -22,7 +23,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
