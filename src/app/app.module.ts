@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import {JwtModule } from '@auth0/angular-jwt';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Http, HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +28,6 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     AppRoutingModule,
     JwtModule.forRoot(
