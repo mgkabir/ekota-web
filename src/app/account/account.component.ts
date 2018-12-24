@@ -8,12 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountComponent implements OnInit {
 
+  accounts: any;
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/ekota/accounts')
-      .subscribe(data=>console.log("accounts component data : "+data), 
-                err=>console.log("accounts component err : "+err));
+      .subscribe((response)=>{
+        this.accounts = response;
+      });
   }
 
 }

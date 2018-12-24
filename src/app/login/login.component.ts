@@ -32,8 +32,7 @@ login() {
         this.loading = false;
 
         if (result) {
-          this.userService.login(result['access_token']);
-          console.log("login component token : "+result['access_token']);
+          this.userService.login(result['access_token']);          
           this.navigateAfterSuccess();
         } else {
           this.error = 'Username or password is incorrect';
