@@ -5,31 +5,29 @@ import { TOKEN_NAME } from './auth.constant';
 @Injectable()
 export class UserService {
   jwtHelper: JwtHelperService = new JwtHelperService();
-  accessToken: string;
-  isAdmin: boolean;
-
+    
   constructor() { }
 
   login(accessToken: string) {
-    const decodedToken = this.jwtHelper.decodeToken(accessToken);
-    
-    this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
-    this.accessToken = accessToken;
-
     localStorage.setItem(TOKEN_NAME, accessToken);
   }
 
   logout() {
-    this.accessToken = null;
-    this.isAdmin = false;
     localStorage.removeItem(TOKEN_NAME);
   }
 
-  isAdminUser(): boolean {
-    return this.isAdmin;
+  isUserTenantAdmin(): boolean {
+    const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem(TOKEN_NAME));
+    return decodedToken.authorities.some(el => el === 'ROLE_TENANT_ADMIN');
   }
 
-  isUser(): boolean {
-    return this.accessToken && !this.isAdmin;
+  isUserSystemAdmin(): boolean {
+    const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem(TOKEN_NAME));
+    return decodedToken.authorities.some(el => el === 'ROLE_SYS_ADMIN');
   }
+
+  isLoggedIn(): boolean{
+    return !this.jwtHelper.isTokenExpired(localStorage.getItem(TOKEN_NAME));
+  }
+
 }

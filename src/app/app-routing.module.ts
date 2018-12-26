@@ -3,11 +3,16 @@ import {Routes, RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'accounts', component: AccountComponent},
+    {
+        path: 'accounts', 
+        component: AccountComponent,
+        canActivate: [AuthGuard]
+    },
     {path: '**', redirectTo: '/home'}
 ];
 
