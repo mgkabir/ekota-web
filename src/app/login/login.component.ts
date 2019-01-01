@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   model: any = {};
   loading = false;
   error = '';
@@ -16,21 +16,15 @@ export class LoginComponent implements OnInit {
  
   constructor(private router: Router, private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService, private userService: UserService) {
-this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
-}
-
-ngOnInit(): void {
-  this.userService.logout();
-}
+    this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
+  }
 
 login() {
   this.loading = true;
-
   this.authenticationService.login(this.model.username, this.model.password)
     .subscribe(
       result => {
         this.loading = false;
-
         if (result) {
           this.userService.login(result['access_token']);          
           this.navigateAfterSuccess();
@@ -43,14 +37,14 @@ login() {
         this.loading = false;
       }
     );
-}
+  }
 
 private navigateAfterSuccess() {
-  if (this.redirectUrl) {
-    this.router.navigateByUrl(this.redirectUrl);
-  } else {
-    this.router.navigate(['/']);
+    if (this.redirectUrl) {
+      this.router.navigateByUrl(this.redirectUrl);
+    } else {
+      this.router.navigate(['/accounts']);
+    }
   }
-}
 
 }
