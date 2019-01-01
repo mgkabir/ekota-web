@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './account/account.component';
+import { AccountRoutingModule } from './account/account-routing.module';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -29,6 +30,7 @@ export function tokenGetter() {
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AccountRoutingModule,
     AppRoutingModule,
     JwtModule.forRoot(
       {
