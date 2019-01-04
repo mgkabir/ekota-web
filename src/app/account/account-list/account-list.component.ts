@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-account-list',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class AccountListComponent implements OnInit {
-
-  constructor() { }
+  accounts: any;
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    
+    this.http.get('http://localhost:8080/ekota/accounts')
+      .subscribe(
+        (response)=>{
+        this.accounts = response;
+      },
+      (error)=>{
+        console.log("error happened : "+error);
+      }
+      );
   }
 
 }

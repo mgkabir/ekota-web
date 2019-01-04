@@ -1,3 +1,5 @@
-<p>
-  account-list works!
-</p>
+<ul class="list-group list-group-flush">
+  <li *ngFor="let anAccount of accounts" class="list-group-item">
+    {{anAccount.name}} <span></span> {{anAccount.mobileNumber}}    
+  </li>
+</ul>

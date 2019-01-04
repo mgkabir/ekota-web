@@ -6,21 +6,4 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
-  accounts: any;
-  constructor(private http:HttpClient) { }
-
-  ngOnInit() {
-    /*
-    this.http.get('http://localhost:8080/ekota/accounts')
-      .subscribe(
-        (response)=>{
-        this.accounts = response;
-      },
-      (error)=>{
-        console.log("error happened : "+error);
-      }
-      ); */
-  }
-
-}
+export class AccountComponent{}
