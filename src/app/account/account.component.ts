@@ -11,6 +11,7 @@ export class AccountComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    /*
     this.http.get('http://localhost:8080/ekota/accounts')
       .subscribe(
         (response)=>{
@@ -19,7 +20,7 @@ export class AccountComponent implements OnInit {
       (error)=>{
         console.log("error happened : "+error);
       }
-      );
+      ); */
   }
 
 }

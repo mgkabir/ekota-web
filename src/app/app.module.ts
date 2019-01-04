@@ -12,7 +12,9 @@ import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './account/account.component';
-import { AccountRoutingModule } from './account/account-routing.module';
+import { AccountFormComponent } from './account/account-form/account-form.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -24,13 +26,15 @@ export function tokenGetter() {
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    AccountComponent
+    AccountComponent,
+    AccountFormComponent,
+    AccountListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
-    AccountRoutingModule,
+    HttpClientModule,    
     AppRoutingModule,
     JwtModule.forRoot(
       {

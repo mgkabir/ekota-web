@@ -43,7 +43,7 @@ private navigateAfterSuccess() {
     if (this.redirectUrl) {
       this.router.navigateByUrl(this.redirectUrl);
     } else {
-      this.router.navigate(['/accounts']);
+      this.router.navigate(['/account/list']);
     }
   }
 
