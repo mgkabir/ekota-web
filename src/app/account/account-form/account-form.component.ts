@@ -9,8 +9,6 @@ export class AccountFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log("AccountFormComponent Initialized");
-  }
+  ngOnInit() { }
 
 }
